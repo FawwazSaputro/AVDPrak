@@ -1,0 +1,300 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="/static/css/style.css" />
+    <title>Kepuasan Ruangan Departemen Matematika</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+  </head>
+  <body>
+    <div class="container">
+      <form id="satisfactionForm" action="{% url 'home' %}" method="POST">
+        {% csrf_token %}
+        <div >Menurut saya, kebersihan ruang kelas Departemen Matematika terjaga.</div>
+        <div class="flex flex-row justify-around">
+        <div class="flex flex-col">
+          <input type="radio" id="kebersihan" name="kebersihan" value="1" required />
+          <label for="kebersihan">
+            Tidak Puas
+          </label>
+        </div>
+        <div class="flex flex-col">
+          <input type="radio" id="kebersihan" name="kebersihan" value="2" required />
+          <label for="kebersihan">
+            Kurang Puas
+          </label>
+        </div>
+        <div class="flex flex-col">
+          <input type="radio" id="kebersihan" name="kebersihan" value="3" required />
+          <label for="kebersihan">
+            Puas
+          </label>
+        </div>
+        <div class="flex flex-col">
+          <input type="radio" id="kebersihan" name="kebersihan" value="4" required />
+          <label for="kebersihan">
+            Sangat Puas
+          </label>
+        </div>
+      </div>
+
+      <div >Menurut saya, tempat sampah telah tersedia di depan ruangan setiap ruang kelas Departemen Matematika dan sampah tidak pernah menumpuk.</div>
+        <div class="flex flex-row justify-around">
+        <div class="flex flex-col">
+          <input type="radio" id="sampah" name="sampah" value="1" required />
+          <label for="sampah">
+            Tidak Puas
+          </label>
+        </div>
+        <div class="flex flex-col">
+          <input type="radio" id="sampah" name="sampah" value="2" required />
+          <label for="sampah">
+            Kurang Puas
+          </label>
+        </div>
+        <div class="flex flex-col">
+          <input type="radio" id="sampah" name="sampah" value="3" required />
+          <label for="sampah">
+            Puas
+          </label>
+        </div>
+        <div class="flex flex-col">
+          <input type="radio" id="sampah" name="sampah" value="4" required />
+          <label for="sampah">
+            Sangat Puas
+          </label>
+        </div>
+      </div>
+
+      <div >Menurut saya, sarana dan prasarana yang terdapat dalam ruang kelas Departemen Matematika seperti kursi dan gorden selalu dalam kondisi bersih (tidak berdebu).</div>
+      <div class="flex flex-row justify-around">
+      <div class="flex flex-col">
+        <input type="radio" id="kebersihanSP" name="kebersihanSP" value="1" required />
+        <label for="kebersihanSP">
+          Tidak Puas
+        </label>
+      </div>
+      <div class="flex flex-col">
+        <input type="radio" id="kebersihanSP" name="kebersihanSP" value="2" required />
+        <label for="kebersihanSP">
+          Kurang Puas
+        </label>
+      </div>
+      <div class="flex flex-col">
+        <input type="radio" id="kebersihanSP" name="kebersihanSP" value="3" required />
+        <label for="kebersihanSP">
+          Puas
+        </label>
+      </div>
+      <div class="flex flex-col">
+        <input type="radio" id="kebersihanSP" name="kebersihanSP" value="4" required />
+        <label for="kebersihanSP">
+          Sangat Puas
+        </label>
+      </div>
+    </div>
+
+    <div >Menurut saya, ruang kelas Departemen Matematika memiliki ukuran yang luas.</div>
+      <div class="flex flex-row justify-around">
+      <div class="flex flex-col">
+        <input type="radio" id="luas" name="luas" value="1" required />
+        <label for="luas">
+          Tidak Puas
+        </label>
+      </div>
+      <div class="flex flex-col">
+        <input type="radio" id="luas" name="luas" value="2" required />
+        <label for="luas">
+          Kurang Puas
+        </label>
+      </div>
+      <div class="flex flex-col">
+        <input type="radio" id="luas" name="luas" value="3" required />
+        <label for="luas">
+          Puas
+        </label>
+      </div>
+      <div class="flex flex-col">
+        <input type="radio" id="luas" name="luas" value="4" required />
+        <label for="luas">
+          Sangat Puas
+        </label>
+      </div>
+    </div>
+
+    <div >Menurut saya, kursi di ruangan kelas sudah sesuai dengan ukuran (tidak terlalu tinggi dan tidak terlalu rendah).</div>
+    <div class="flex flex-row justify-around">
+    <div class="flex flex-col">
+      <input type="radio" id="kenyamananKursi" name="kenyamananKursi" value="1" required />
+      <label for="kenyamananKursi">
+        Tidak Puas
+      </label>
+    </div>
+    <div class="flex flex-col">
+      <input type="radio" id="kenyamananKursi" name="kenyamananKursi" value="2" required />
+      <label for="kenyamananKursi">
+        Kurang Puas
+      </label>
+    </div>
+    <div class="flex flex-col">
+      <input type="radio" id="kenyamananKursi" name="kenyamananKursi" value="3" required />
+      <label for="kenyamananKursi">
+        Puas
+      </label>
+    </div>
+    <div class="flex flex-col">
+      <input type="radio" id="kenyamananKursi" name="kenyamananKursi" value="4" required />
+      <label for="kenyamananKursi">
+        Sangat Puas
+      </label>
+    </div>
+  </div>
+
+  <div >Menurut saya, kursi yang terdapat dalam ruang kelas Departemen Matematika saat ini seringkali membuat bising.</div>
+  <div class="flex flex-row justify-around">
+  <div class="flex flex-col">
+    <input type="radio" id="kebisinganKursi" name="kebisinganKursi" value="1" required />
+    <label for="kebisinganKursi">
+      Tidak Puas
+    </label>
+  </div>
+  <div class="flex flex-col">
+    <input type="radio" id="kebisinganKursi" name="kebisinganKursi" value="2" required />
+    <label for="kebisinganKursi">
+      Kurang Puas
+    </label>
+  </div>
+  <div class="flex flex-col">
+    <input type="radio" id="kebisinganKursi" name="kebisinganKursi" value="3" required />
+    <label for="kebisinganKursi">
+      Puas
+    </label>
+  </div>
+  <div class="flex flex-col">
+    <input type="radio" id="kebisinganKursi" name="kebisinganKursi" value="4" required />
+    <label for="kebisinganKursi">
+      Sangat Puas
+    </label>
+  </div>
+</div>
+
+<div >Menurut saya, jumlah kursi yang terdapat dalam ruang kelas Departemen Matematika cukup untuk digunakan dalam Kegiatan Belajar Mengajar.</div>
+      <div class="flex flex-row justify-around">
+      <div class="flex flex-col">
+        <input type="radio" id="jumlahKursi" name="jumlahKursi" value="1" required />
+        <label for="jumlahKursi">
+          Tidak Puas
+        </label>
+      </div>
+      <div class="flex flex-col">
+        <input type="radio" id="jumlahKursi" name="jumlahKursi" value="2" required />
+        <label for="jumlahKursi">
+          Kurang Puas
+        </label>
+      </div>
+      <div class="flex flex-col">
+        <input type="radio" id="jumlahKursi" name="jumlahKursi" value="3" required />
+        <label for="jumlahKursi">
+          Puas
+        </label>
+      </div>
+      <div class="flex flex-col">
+        <input type="radio" id="jumlahKursi" name="jumlahKursi" value="4" required />
+        <label for="jumlahKursi">
+          Sangat Puas
+        </label>
+      </div>
+    </div>
+
+    <div >Menurut saya, alat-alat elektronik untuk membantu Kegiatan Belajar Mengajar seperti mikrofon dan LCD sudah lengkap.</div>
+      <div class="flex flex-row justify-around">
+      <div class="flex flex-col">
+        <input type="radio" id="alatElektronik" name="alatElektronik" value="1" required />
+        <label for="alatElektronik">
+          Tidak Puas
+        </label>
+      </div>
+      <div class="flex flex-col">
+        <input type="radio" id="alatElektronik" name="alatElektronik" value="2" required />
+        <label for="alatElektronik">
+          Kurang Puas
+        </label>
+      </div>
+      <div class="flex flex-col">
+        <input type="radio" id="alatElektronik" name="alatElektronik" value="3" required />
+        <label for="alatElektronik">
+          Puas
+        </label>
+      </div>
+      <div class="flex flex-col">
+        <input type="radio" id="alatElektronik" name="alatElektronik" value="4" required />
+        <label for="alatElektronik">
+          Sangat Puas
+        </label>
+      </div>
+    </div>
+
+    <div >Menurut saya, jumlah AC pada ruangan sudah sesuai dengan kapasitas mahasiswa.</div>
+      <div class="flex flex-row justify-around">
+      <div class="flex flex-col">
+        <input type="radio" id="AC" name="AC" value="1" required />
+        <label for="AC">
+          Tidak Puas
+        </label>
+      </div>
+      <div class="flex flex-col">
+        <input type="radio" id="AC" name="AC" value="2" required />
+        <label for="AC">
+          Kurang Puas
+        </label>
+      </div>
+      <div class="flex flex-col">
+        <input type="radio" id="AC" name="AC" value="3" required />
+        <label for="AC">
+          Puas
+        </label>
+      </div>
+      <div class="flex flex-col">
+        <input type="radio" id="AC" name="AC" value="4" required />
+        <label for="AC">
+          Sangat Puas
+        </label>
+      </div>
+    </div>
+
+    <div >Menurut saya, alat-alat ruangan seperti pintu, gorden, dan jendela semua berfungsi dengan baik dan tidak ada yang rusak.</div>
+      <div class="flex flex-row justify-around">
+      <div class="flex flex-col">
+        <input type="radio" id="kondisiSP" name="kondisiSP" value="1" required />
+        <label for="kondisiSP">
+          Tidak Puas
+        </label>
+      </div>
+      <div class="flex flex-col">
+        <input type="radio" id="kondisiSP" name="kondisiSP" value="2" required />
+        <label for="kondisiSP">
+          Kurang Puas
+        </label>
+      </div>
+      <div class="flex flex-col">
+        <input type="radio" id="kondisiSP" name="kondisiSP" value="3" required />
+        <label for="kondisiSP">
+          Puas
+        </label>
+      </div>
+      <div class="flex flex-col">
+        <input type="radio" id="kondisiSP" name="kondisiSP" value="4" required />
+        <label for="kondisiSP">
+          Sangat Puas
+        </label>
+      </div>
+    </div>
+
+        <div id="btnContainer">
+          <button type="submit" >Submit</button>
+        </div>
+      </form>
+    </div>
+  </body>
+</html>
