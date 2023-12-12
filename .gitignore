@@ -1,0 +1,47 @@
+# Virtual environment
+venv/
+venv3/
+_pycache_/
+
+# Python bytecode
+*.pyc
+*.pyo
+*.pyd
+
+# Django-related
+db.sqlite3
+media/
+*.log
+
+# Visual Studio Code
+.vscode/
+
+# PyCharm
+.idea/
+
+# Jupyter Notebooks
+.ipynb_checkpoints/
+
+# Environment variables
+.env
+
+# macOS
+.DS_Store
+
+# Compiled Python files
+*.pyc
+
+# Compiled C extensions
+*.so
+
+# Python caches
+_pycache_/
+
+# Ignore migrations
+**/migrations/
+
+# Ignore local settings
+local_settings.py
+
+# Ignore test database
+test_db.sqlite3
