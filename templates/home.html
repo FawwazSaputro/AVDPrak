@@ -1,0 +1,71 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="{% static 'css/home.css' %}" />
+    <title>Survey Kepuasan</title>
+  </head>
+  <body>
+    {% if result%}
+    <div class="backdrop" id="backdrop">
+      <div class="modal" id="modal">
+        {% for res in result %}
+          <p>{{res}}</p>
+        {% endfor %}
+        <button>Okay!</button>
+      </div>
+    </div>
+    {% endif %}
+    </div>
+    <div class="root">
+      <div class="content">
+        <h1>Kepuasan Ruangan Departemen Matematika</h1>
+        <form action="{% url 'home' %}" method="post">
+          {% csrf_token %}
+
+          {% for label, txt in labels.items %}
+          <div class="form-group">
+            <h2>{{ txt }}</h2>
+            <div class="input-group">
+              {% for scale_name, val in scales.items %}
+              <div class="sub-input-group">
+                <input
+                  type="radio"
+                  name="{{ label }}"
+                  id="{{ label }}{{ val }}"
+                  value="{{ val }}"
+                />
+                <label for="{{ label }}{{ val }}">{{ scale_name }}</label>
+              </div>
+              {% endfor %}
+            </div>
+          </div>
+          {% endfor %}
+          <button type="submit">Submit</button>
+        </form>
+      </div>
+    </div>
+
+    <script>
+      const backdrop = document.querySelector("#backdrop");
+      const modal = document.querySelector("#modal");
+      const btn = document.querySelector("#modal button");
+          
+      backdrop.addEventListener("click", () => {
+        backdrop.style.display= 'none';
+      });
+      
+      modal.addEventListener("click", (e) => {
+        e.stopPropagation();
+      });
+      
+      btn.addEventListener("click", () => {
+        backdrop.style.display= 'none';
+      });
+
+    </script>
+  </body>
+</html>

@@ -1,9 +1,34 @@
+import json
 from django.shortcuts import render
+from django.http import JsonResponse
 from .machine_learning import proses
 
 # Create your views here.
+    
 def home(request):
-    if request.method == 'POST':
+    context = {}
+    
+    context['labels'] = {
+        'kebersihan':"Menurut saya, kebersihan ruang kelas Departemen Matematika terjaga.",
+        'sampah': "Menurut saya, tempat sampah telah tersedia di depan ruangan setiap ruang kelas Departemen Matematika dan sampah tidak pernah menumpuk.",
+        'kebersihanSP': "Menurut saya, tempat sampah telah tersedia di depan ruangan setiap ruang kelas Departemen Matematika dan sampah tidak pernah menumpuk.",
+        'luas': "Menurut saya, ruang kelas Departemen Matematika memiliki ukuran yang luas.",
+        'kenyamananKursi': "Menurut saya, kursi di ruangan kelas sudah sesuai dengan ukuran (tidak terlalu tinggi dan tidak terlalu rendah).",
+        'kebisinganKursi': "Menurut saya, kursi yang terdapat dalam ruang kelas Departemen Matematika saat ini seringkali membuat bising.",
+        'jumlahKursi': "Menurut saya, jumlah kursi yang terdapat dalam ruang kelas Departemen Matematika cukup untuk digunakan dalam Kegiatan Belajar Mengajar.",
+        'alatElektronik': "Menurut saya, alat-alat elektronik untuk membantu Kegiatan Belajar Mengajar seperti mikrofon dan LCD sudah lengkap.",
+        'AC': "Menurut saya, jumlah AC pada ruangan sudah sesuai dengan kapasitas mahasiswa.",
+        'kondisiSP': "Menurut saya, alat-alat ruangan seperti pintu, gorden, dan jendela semua berfungsi dengan baik dan tidak ada yang rusak.",
+    }
+    context['scales'] = {
+        'Tidak Puas':1,
+        'Kurang Puas':2,
+        'Puas':3,
+        'Sangat Puas':4
+    }
+    
+    if request.method == "POST":
+        
         kebersihan = request.POST.get('kebersihan')
         sampah = request.POST.get('sampah')
         kebersihanSP = request.POST.get('kebersihanSP')
@@ -12,9 +37,9 @@ def home(request):
         kebisinganKursi = request.POST.get('kebisinganKursi')
         kenyamananKursi = request.POST.get('kenyamananKursi')
         alatElektronik = request.POST.get('alatElektronik')
-        AC = request.POST.get('AC')
+        ac = request.POST.get('AC')
         kondisiSP = request.POST.get('kondisiSP')
-# Kebersihan,Sampah,Kebersihan_SP,Luas,Kenyamanan_Kursi,Kebisingan_Kursi,Jumlah_Kursi,Alat_Elektronik,AC,Kondisi_SP
+
         input = []
         input2 = []
 
@@ -26,31 +51,13 @@ def home(request):
         input2.append(int(kebisinganKursi))
         input2.append(int(jumlahKursi))
         input2.append(int(alatElektronik))
-        input2.append(int(AC))
+        input2.append(int(ac))
         input2.append(int(kondisiSP))
         input.append(input2)
 
         result = proses(input)
-        context = {"result":result}
-        return render(request,"output.html",context)
-    
-    else:
-        return render(request,"index.html")
-
-    #     input = {
-    #         "kebersihan":kebersihan,
-    #         "sampah":sampah,
-    #         'kebersihanSP' :kebersihanSP,
-    #         'luas' :luas,
-    #         'jumlahKursi' :jumlahKursi,
-    #         'kebisinganKursi' :kebisinganKursi,
-    #         'kenyamananKursi' :kenyamananKursi,
-    #         'alatElektronik' :alatElektronik,
-    #         'AC' :AC,
-    #         'kondisiSP' :kondisiSP,
-    #     }
-    #     result = process(input)
-    #     context = {"result":result}
-    #     return render(request,"output.html",context)
-    # elif request.method == 'GET':
-    #     return render(request,'index.html')
+        context["result"] = result
+        # dd(context)
+        return render(request, "home.html", context)
+        
+    return render(request, 'home.html', context)

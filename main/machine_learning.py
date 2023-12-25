@@ -1,5 +1,5 @@
 import pandas as pd
-import os 
+import os
 from sklearn.naive_bayes import GaussianNB
 from sklearn.model_selection import train_test_split
 
